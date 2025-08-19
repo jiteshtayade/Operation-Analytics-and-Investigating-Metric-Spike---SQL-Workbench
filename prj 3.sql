@@ -203,27 +203,9 @@ select count(distinct user_id)as active_users,
         year(occured_at) as years
 	from `events` 
     group by years,weeks
-	order by active_users desc
+	order by weeks
     ;
-    
-SELECT 
-  YEAR(created_at) AS year,
-  MONTH(created_at) AS month,
-  COUNT(DISTINCT user_id) AS new_users
-FROM users
-GROUP BY year, month
-ORDER BY new_users;
 
-SELECT 
-  YEAR(created_at) AS yr,
-  MONTH(created_at) AS mon,
-  COUNT(DISTINCT user_id) AS new_users,
-  SUM(COUNT(DISTINCT user_id)) OVER (
-    ORDER BY YEAR(created_at), MONTH(created_at)
-  ) AS cumulative_users
-FROM users
-GROUP BY yr, mon
-ORDER BY yr, mon;
 
 -- Analyze the growth of users over time for a product. (month)
 SELECT 
